@@ -1,23 +1,18 @@
-# platform_external_piper — Piper fork for JibarOS
+# platform_external_piper — reserved
 
-JibarOS-maintained fork of [`rhasspy/piper`](https://github.com/rhasspy/piper).
+This repo is currently reserved but **not active** in the JibarOS manifest.
 
-Reference backend for OIR's `audio.synthesize` capability (text-to-speech).
+## Why it exists
 
-## Why fork
+JibarOS v0.6.9 runs Piper text-to-speech through `platform_external_onnxruntime` — `oird` loads the Piper `.onnx` voice model directly via ONNX Runtime. No separate Piper runtime is required today.
 
-- Reproducible snapshot pins.
-- Android `Android.bp` wiring so Piper's VITS ONNX models can be loaded through the shared ONNX Runtime already on the device.
-
-## Runtime requirements
-
-Each voice model needs a G2P (grapheme-to-phoneme) sidecar at `<model>.phonemes.json`. Without it, `audio.synthesize` returns `CAPABILITY_UNAVAILABLE_NO_MODEL` cleanly — no silent bad audio.
+This repo is a placeholder in case we later need native Piper integration (custom G2P, new voice formats, Piper CLI tools on-device). Not currently wired into `jibar-os/manifest`.
 
 ## See also
 
-- Upstream: [`rhasspy/piper`](https://github.com/rhasspy/piper)
-- JibarOS consumer: [`oird`](https://github.com/jibar-os/oird)
+- [`platform_external_onnxruntime`](https://github.com/Jibar-OS/platform_external_onnxruntime) — the runtime that actually executes Piper voices today.
+- [`docs/MODELS.md`](https://github.com/Jibar-OS/docs/blob/main/MODELS.md#audio-synthesize) — how `audio.synthesize` is wired.
 
 ## Migration status
 
-🚧 Transfer/creation in progress.
+🚧 No active source import planned. Not on v1.0 critical path.
